@@ -18,7 +18,7 @@ public class Main
         a.connect();
 
         //Put task code here
-
+        a.getCountriesWorld();
 
         // Disconnect from database
         a.disconnect();
@@ -48,7 +48,10 @@ public class Main
                 // Wait a bit for db to start
                 Thread.sleep(30000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
+                con = DriverManager.getConnection(
+                        "jdbc:mysql://localhost:33060/world?allowPublicKeyRetrieval=true&useSSL=false",
+                        "root",
+                        "example");
                 System.out.println("Successfully connected");
                 break;
             }
@@ -63,6 +66,36 @@ public class Main
             }
         }
     }
+
+    public void getCountriesWorld()
+    {
+        try
+        {
+            Statement stmt = con.createStatement();
+
+            String sql =
+                    "SELECT Name, Population " +
+                            "FROM country " +
+                            "ORDER BY Population DESC";
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next())
+            {
+                System.out.println(
+                        rs.getString("Name") + " - " +
+                                rs.getInt("Population"));
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+
+
 
     /**
      * Disconnect from the MySQL database.
