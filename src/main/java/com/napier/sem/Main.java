@@ -18,6 +18,10 @@ public class Main
         a.connect();
 
         //Put task code here
+        a.getCountriesContinent("Europe");
+
+        a.getCountriesRegion("British Islands");
+
         a.getCountriesWorld();
 
         // Disconnect from database
@@ -93,8 +97,72 @@ public class Main
         }
     }
 
+    public void getCountriesContinent(String continent)
+    {
+        try
+        {
+            Statement stmt = con.createStatement();
+
+            String sql =
+                    "SELECT Name, Population " +
+                            "FROM country " +
+                            "WHERE Continent = '" + continent + "' " +
+                            "ORDER BY Population DESC";
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next())
+            {
+                System.out.println(
+                        rs.getString("Name") + " - " +
+                                rs.getInt("Population"));
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
 
 
+    /**
+     * Task 3
+     * Print all countries in a region ordered by population
+     * from largest population to smallest population.
+     */
+    public void getCountriesRegion(String region)
+    {
+        try
+        {
+            // Create SQL statement
+            Statement stmt = con.createStatement();
+
+            // SQL query to select countries from a specific region
+            // and sort them by population in descending order
+            String sql =
+                    "SELECT Name, Population " +
+                            "FROM country " +
+                            "WHERE Region = '" + region + "' " +
+                            "ORDER BY Population DESC";
+
+            // Execute query
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // Loop through results and print each country
+            while (rs.next())
+            {
+                System.out.println(
+                        rs.getString("Name") +
+                                " - " +
+                                rs.getInt("Population"));
+            }
+        }
+        catch (Exception e)
+        {
+            // Print any error messages
+            System.out.println(e.getMessage());
+        }
+    }
 
 
     /**
