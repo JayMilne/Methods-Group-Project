@@ -71,21 +71,30 @@ public class Main
         }
     }
 
+    /**
+     * Task 1
+     * Displays all countries in the world ordered by population (largest first).
+     */
     public void getCountriesWorld()
     {
         try
         {
+            // Create a statement object to execute SQL queries
             Statement stmt = con.createStatement();
 
+            // SQL query to retrieve country name and population
             String sql =
                     "SELECT Name, Population " +
                             "FROM country " +
                             "ORDER BY Population DESC";
 
+            // Execute the query and store the results
             ResultSet rs = stmt.executeQuery(sql);
 
+            // Loop through all returned rows
             while (rs.next())
             {
+                // Print country name and population
                 System.out.println(
                         rs.getString("Name") + " - " +
                                 rs.getInt("Population"));
@@ -93,24 +102,36 @@ public class Main
         }
         catch (Exception e)
         {
+            // Display any error message if something goes wrong
             System.out.println(e.getMessage());
         }
     }
+
+
+    /**
+     * Task 2
+     * Displays all countries in a specified continent,
+     * ordered by population from largest to smallest.
+     */
 
     public void getCountriesContinent(String continent)
     {
         try
         {
+            // Create statement
             Statement stmt = con.createStatement();
 
+            // SQL query
             String sql =
                     "SELECT Name, Population " +
                             "FROM country " +
                             "WHERE Continent = '" + continent + "' " +
                             "ORDER BY Population DESC";
 
+            // Execute query
             ResultSet rs = stmt.executeQuery(sql);
 
+            // Display results
             while (rs.next())
             {
                 System.out.println(
