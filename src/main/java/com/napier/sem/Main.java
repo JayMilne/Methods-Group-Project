@@ -24,6 +24,12 @@ public class Main
 
         a.getCountriesWorld();
 
+        a.topPopulatedCountries(10);
+
+        a.topCountriesContinent("Europe", 10);
+
+        a.topCountriesRegion("British Islands", 2);
+
         // Disconnect from database
         a.disconnect();
     }
@@ -164,6 +170,104 @@ public class Main
         }
     }
 
+    /** Task 4
+     * Print the top N populated countries in the world.
+     * */
+    public void topPopulatedCountries(int n)
+    {
+        try {
+
+            // create our sql statement
+            Statement stmt = con.createStatement();
+
+            // make our query
+            String sql =
+                    "SELECT Name, Population " +
+                            "FROM country " +
+                            "ORDER BY Population DESC" +
+                            "LIMIT " + n;
+
+            // execute our query
+            ResultSet rs = stmt.executeQuery(sql);
+
+            //print results
+            while (rs.next())
+            {
+                System.out.println(rs.getString("Name") + " - " + rs.getInt("Population"));
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Task 5
+     * Print the top N populated countries in a continent
+     * */
+    public void topCountriesContinent(String continent, int n)
+    {
+        try {
+
+            // create sql statement
+            Statement stmt = con.createStatement();
+
+            // make query
+            String sql =
+                    "SELECT Name, Population " +
+                            "FROM country " +
+                            "WHERE Continent = " + continent +
+                            "ORDER BY Population DESC " +
+                            "LIMIT " + n;
+
+            // execute query
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // print results
+            while (rs.next())
+            {
+                System.out.println(rs.getString("Name") + " - " + rs.getInt("Population"));
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /** Task 6
+     * Print the top N populated countries in a region
+     * */
+    public void topCountriesRegion(String region, int n)
+    {
+        try {
+
+            // make sql statement
+            Statement stmt = con.createStatement();
+
+            // make query
+            String sql =
+                    "SELECT Name, Population " +
+                            "FROM country " +
+                            "WHERE Region = " + region +
+                            "ORDER BY Population DESC " +
+                            "LIMIT " + n;
+
+            // execute query
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // print results
+            while (rs.next())
+            {
+                System.out.println(rs.getString("Name") + " - " + rs.getInt("Population"));
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
 
     /**
      * Disconnect from the MySQL database.
