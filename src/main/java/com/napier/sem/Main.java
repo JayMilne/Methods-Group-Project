@@ -4,6 +4,10 @@ import java.sql.*;
 
 public class Main
 {
+    void testSomething() {
+        //hello world
+
+    }
     /**
      * Connection to MySQL database.
      */
