@@ -11,7 +11,7 @@ public class IntegrationTests
     static void init()
     {
         a = new Main();
-        a.connect();
+        //a.connect();
     }
 
     @Test
