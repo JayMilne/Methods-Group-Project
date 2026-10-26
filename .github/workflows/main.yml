@@ -16,7 +16,7 @@ jobs:
           java-version: '21'
           distribution: 'microsoft'
       - name: Unit Tests
-        run: mvn -Dtest=com.napier.devops.UnitTests test
+        run: mvn -Dtest=com.napier.sem.UnitTests test
   build:
     name: Build and Start Using docker-compose
     runs-on: ubuntu-22.04
