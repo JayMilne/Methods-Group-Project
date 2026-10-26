@@ -11,8 +11,8 @@ public class IntegrationTests
     static void init()
     {
         a = new Main();
-        //a.connect();
-    }
+        a.connect("localhost:33060", 30000);   }
+
 
     @Test
     void printSalariesTestNull()
