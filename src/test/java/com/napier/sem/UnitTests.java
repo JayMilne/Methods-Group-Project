@@ -10,4 +10,5 @@ public class UnitTests {
     static void init() {
         a = new Main();
     }
+    //ADD NEW TESTS HERE
 }

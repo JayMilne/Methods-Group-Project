@@ -11,12 +11,7 @@ public class IntegrationTests
     static void init()
     {
         a = new Main();
-        a.connect("localhost:33060", 30000);   }
-
-
-    @Test
-    void printSalariesTestNull()
-    {
-        a.getCountriesContinent("Europe");
+        a.connect("localhost:33060", 30000);
     }
+    //ADD NEW TESTS HERE
 }
