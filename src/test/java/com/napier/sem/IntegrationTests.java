@@ -3,7 +3,7 @@ package com.napier.sem;
 import org.junit.jupiter.api.*;
 
 
-public class Tests
+public class IntegrationTests
 {
     static Main a;
 
