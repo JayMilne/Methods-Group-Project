@@ -34,6 +34,8 @@ public class Main
 
         a.topCountriesRegion("British Islands", 2);
 
+        a.topPopulatedCitiesWorld(10);
+
         // Disconnect from database
         a.disconnect();
     }
@@ -283,6 +285,56 @@ public class Main
             System.out.println(e.getMessage());
         }
     }
+
+
+    /**
+     * Task 11
+     * Print the top N populated cities in the world,
+     * ordered by population from largest to smallest.
+     */
+    public void topPopulatedCitiesWorld(int n)
+
+    {
+        try
+        {
+            // Create a statement object to execute SQL queries
+            Statement stmt = con.createStatement();
+
+            // SQL query to retrieve city name, country name,
+            // district and population
+            String sql =
+                    "SELECT city.Name, country.Name AS Country, " +
+                            "city.District, city.Population " +
+                            "FROM city " +
+                            "JOIN country ON city.CountryCode = country.Code " +
+                            "ORDER BY city.Population DESC " +
+                            "LIMIT " + n;
+
+            // Execute the query and store the results
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // Loop through all returned rows
+            while (rs.next())
+            {
+                // Print city name, country, district and population
+                System.out.println(
+                        rs.getString("Name") + " - " +
+                                rs.getString("Country") + " - " +
+                                rs.getString("District") + " - " +
+                                rs.getInt("Population"));
+            }
+
+            // Close result set and statement
+            rs.close();
+            stmt.close();
+        }
+        catch (Exception e)
+        {
+            // Display any error message if something goes wrong
+            System.out.println(e.getMessage());
+        }
+    }
+
 
     /**
      * Disconnect from the MySQL database.
