@@ -38,7 +38,7 @@ public class Main
 
         a.topPopulatedCitiesContinent("Europe", 10);
 
-        a.topPopulatedCitiesRegion("British Islands", 10);6
+        a.topPopulatedCitiesRegion("British Islands", 10);
 
         // Disconnect from database
         a.disconnect();
