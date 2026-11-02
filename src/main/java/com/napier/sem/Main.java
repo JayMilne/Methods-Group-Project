@@ -8,6 +8,12 @@ public class Main
      * Connection to MySQL database.
      */
     private Connection con = null;
+    Main() {
+
+    }
+    Main (Connection con) {
+        this.con = con;
+    }
 
     public static void main(String[] args)
     {
@@ -56,7 +62,7 @@ public class Main
             System.out.println("Connecting to database...");
             try {
                 // Wait a bit for db to start
-                Thread.sleep(delay);
+//                Thread.sleep(delay);
                 // Connect to database
                 con = DriverManager.getConnection("jdbc:mysql://" + location
                                 + "/world?allowPublicKeyRetrieval=true&useSSL=false",
@@ -66,9 +72,10 @@ public class Main
             } catch (SQLException sqle) {
                 System.out.println("Failed to connect to database attempt " +                                  Integer.toString(i));
                 System.out.println(sqle.getMessage());
-            } catch (InterruptedException ie) {
-                System.out.println("Thread interrupted? Should not happen.");
             }
+//            catch (InterruptedException ie) {
+//                System.out.println("Thread interrupted? Should not happen.");
+//            }
         }
     }
 
