@@ -291,6 +291,156 @@ public class Main
     }
 
     /**
+     * Task 9
+     * Displays all cities in a specified region,
+     * ordered by population from largest to smallest.
+     */
+    public void getCitiesRegion(String region)
+    {
+        try
+        {
+            // create statement
+            Statement stmt = con.createStatement();
+
+            // create query
+            String sql =
+                    "SELECT city.Name, city.Population " +
+                            "FROM city " +
+                            "JOIN country ON city.CountryCode = country.Code " +
+                            "WHERE country.Region = '" + region + "' " +
+                            "ORDER BY city.Population DESC";
+
+            // execute query
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // print results
+            while (rs.next())
+            {
+                System.out.println(
+                        rs.getString("Name") +
+                                " - " +
+                                rs.getInt("Population"));
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Task 10
+     * Displays all cities in a specified district,
+     * ordered by population from largest to smallest.
+     */
+    public void getCitiesDistrict(String district)
+    {
+        try
+        {
+            // create statement
+            Statement stmt = con.createStatement();
+
+            // create query
+            String sql =
+                    "SELECT Name, Population " +
+                            "FROM city " +
+                            "WHERE District = '" + district + "' " +
+                            "ORDER BY Population DESC";
+
+            // execute query
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // print results
+            while (rs.next())
+            {
+                System.out.println(
+                        rs.getString("Name") +
+                                " - " +
+                                rs.getInt("Population"));
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Task 16
+     * Displays the top N populated cities in a specified district.
+     */
+    public void topCitiesDistrict(String district, int n)
+    {
+        try
+        {
+            // create statement
+            Statement stmt = con.createStatement();
+
+            // create query
+            String sql =
+                    "SELECT Name, Population " +
+                            "FROM city " +
+                            "WHERE District = '" + district + "' " +
+                            "ORDER BY Population DESC " +
+                            "LIMIT " + n;
+
+            // execute query
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // print results
+            while (rs.next())
+            {
+                System.out.println(
+                        rs.getString("Name") +
+                                " - " +
+                                rs.getInt("Population"));
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Task 15
+     * Displays the top N populated cities in a specified country.
+     */
+    public void topCitiesCountry(String country, int n)
+    {
+        try
+        {
+            // create statement
+            Statement stmt = con.createStatement();
+
+            // create query
+            String sql =
+                    "SELECT city.Name, city.Population " +
+                            "FROM city " +
+                            "JOIN country ON city.CountryCode = country.Code " +
+                            "WHERE country.Name = '" + country + "' " +
+                            "ORDER BY city.Population DESC " +
+                            "LIMIT " + n;
+
+            // execute query
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // print results
+            while (rs.next())
+            {
+                System.out.println(
+                        rs.getString("Name") +
+                                " - " +
+                                rs.getInt("Population"));
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
      * Disconnect from the MySQL database.
      */
     public void disconnect()
