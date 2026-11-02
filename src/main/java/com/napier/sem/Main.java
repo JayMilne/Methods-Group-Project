@@ -1,6 +1,7 @@
 package com.napier.sem;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Main
 {
@@ -39,6 +40,10 @@ public class Main
         a.topPopulatedCitiesContinent("Europe", 10);
 
         a.topPopulatedCitiesRegion("British Islands", 10);
+
+        a.citiesInWorldLargeToSmall();
+
+        a.citiesInContinentLargeToSmall("Europe");
 
         // Disconnect from database
         a.disconnect();
@@ -287,6 +292,68 @@ public class Main
         catch (Exception e)
         {
             System.out.println(e.getMessage());
+        }
+    }
+
+    /** Task 7
+     * Returns list of all the cities in the world, largest to smallest.
+     * Prints error and returns null on fail.
+     * */
+    public ArrayList<City> citiesInWorldLargeToSmall()
+    {
+        try {
+            //Setup and run SQL query
+            Statement stmt = con.createStatement();
+            String sql =
+                    "SELECT Name, Population " +
+                            "FROM city " +
+                            "ORDER BY Population DESC";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            //Add results to list
+            ArrayList<City> cityList = new ArrayList<>();
+            while (rs.next())
+            {
+                cityList.add(new City(rs.getString("Name"), rs.getInt("Population")));
+            }
+            return cityList;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    /** Task 8
+     * Return list of all the cities in a given continent, largest to smallest.
+     * Prints error and returns null on fail.
+     * */
+    public ArrayList<City> citiesInContinentLargeToSmall(String continent)
+    {
+        try {
+            //Setup and run SQL query
+            Statement stmt = con.createStatement();
+            String sql =
+                    "SELECT city.Name, city.Population " +
+                            "FROM city " +
+                            "JOIN country on city.CountryCode = country.Code " +
+                            "WHERE country.Continent = '" + continent +
+                            "' ORDER BY city.Population DESC";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            //Add results to list
+                ArrayList<City> cityList = new ArrayList<>();
+            while (rs.next())
+            {
+                cityList.add(new City(rs.getString("Name"), rs.getInt("Population")));
+            }
+
+            return cityList;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            return null;
         }
     }
 
