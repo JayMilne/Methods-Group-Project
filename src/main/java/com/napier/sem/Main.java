@@ -285,6 +285,109 @@ public class Main
     }
 
     /**
+     * Task 17
+     * Print All captial cities in the World ordered by population
+     * from Largest population to smallest population
+     */
+    public void getCapitalsWorld() {
+        try {
+            //Create a statement object to execute SQL queries
+            Statement stmt = con.createStatement();
+
+             //SQL query to retrieve capital name and population
+            String sql =
+                    "SELECT Name, Population " +
+                            "FROM Capital " +
+                            "ORDER BY Population DESC";
+
+            //Execute the query and store the results
+            ResultSet rs = stmt.executeQuery(sql);
+
+            //Loop through all returned rows
+            while (rs.next()) {
+                //print capital name and population
+                System.out.println(
+                        rs.getString("Name") + " - " +
+                                rs.getInt("Population")
+                );
+            }
+        } catch (Exception e) {
+            //Display any error message if something goes wrong
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Task 18
+     * Print All Capital Cities in a continent ordered by population
+     * from largest population to smallets population
+     */
+    public void getCapitalsContinent(String continent) {
+        try {
+            //Create SQL statement
+            Statement stmt = con.createStatement();
+
+            //SQL query to select capitals from a specific continent
+            //and sort them by population in descending order
+            String sql =
+                    "SELECT Name, Population " +
+                            "FROM Capital " +
+                            "WHERE Continent = '" + continent + "' " +
+                            "ORDER BY Population DESC";
+
+            //Execute query
+                    ResultSet rs = stmt.executeQuery(sql);
+
+            //Loop through results and print each capital
+            while (rs.next()) {
+                System.out.println(
+                        rs.getString("Name") +
+                                " - " +
+                                rs.getInt("Population")
+                );
+            }
+        } catch (Exception e) {
+            //print any error messages
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Task 19
+     * Print All capital cities in a region ordered by population
+     * from largest population to smallest population
+     */
+    public void getCapitalsRegion(String region) {
+        try {
+            //Create SQL statement
+            Statement stmt = con.createStatement();
+
+            //SQL query to select capitals from a specific region
+            //and sort them by population in descending order
+            String sql =
+                    "SELECT Name, Population " +
+                            "FROM Captial " +
+                            "WHERE Region = '" + region + "' " +
+                            "ORDER BY Population DESC";
+
+            //Execute query
+            ResultSet rs = stmt.executeQuery(sql);
+
+            //Loop through results and print each capital
+            while (rs.next()) {
+                System.out.println(
+                        rs.getString("Name") +
+                                " - " +
+                                rs.getInt("Population")
+                );
+            }
+        } catch (Exception e) {
+            //print any error messages
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
      * Disconnect from the MySQL database.
      */
     public void disconnect()
