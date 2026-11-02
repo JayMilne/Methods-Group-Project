@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.napier.sem.UnitTests" time="0.014" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.napier.sem.UnitTests" time="0.024" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="GB"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Microsoft\jdk-21.0.8.9-hotspot\bin"/>
-    <property name="sun.java.command" value="C:\Users\jaymi\AppData\Local\Temp\surefire11109900176711249551\surefirebooter-20261102144142491_3.jar C:\Users\jaymi\AppData\Local\Temp\surefire11109900176711249551 2026-11-02T14-41-42_310-jvmRun1 surefire-20261102144142491_1tmp surefire_0-20261102144142491_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\jaymi\AppData\Local\Temp\surefire17281467810967748577\surefirebooter-20261102145354010_3.jar C:\Users\jaymi\AppData\Local\Temp\surefire17281467810967748577 2026-11-02T14-53-53_810-jvmRun1 surefire-20261102145354010_1tmp surefire_0-20261102145354010_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\jaymi\Documents\Y2TR1\Methods\Methods-Group-Project\target\test-classes;C:\Users\jaymi\Documents\Y2TR1\Methods\Methods-Group-Project\target\classes;C:\Users\jaymi\.m2\repository\mysql\mysql-connector-java\8.0.18\mysql-connector-java-8.0.18.jar;C:\Users\jaymi\.m2\repository\com\google\protobuf\protobuf-java\3.6.1\protobuf-java-3.6.1.jar;C:\Users\jaymi\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.1.0\junit-jupiter-api-5.1.0.jar;C:\Users\jaymi\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\jaymi\.m2\repository\org\opentest4j\opentest4j\1.0.0\opentest4j-1.0.0.jar;C:\Users\jaymi\.m2\repository\org\junit\platform\junit-platform-commons\1.1.0\junit-platform-commons-1.1.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\jaymi\AppData\Local\Temp\surefire11109900176711249551\surefirebooter-20261102144142491_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\jaymi\AppData\Local\Temp\surefire17281467810967748577\surefirebooter-20261102145354010_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.8+9-LTS"/>
@@ -64,11 +64,11 @@
     <property name="maven.repo.local" value="C:\Users\jaymi\.m2\repository"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="task7NullOnFail" classname="com.napier.sem.UnitTests" time="0.007">
+  <testcase name="task7NullOnFail" classname="com.napier.sem.UnitTests" time="0.011">
     <system-out><![CDATA[Cannot invoke "java.sql.Connection.createStatement()" because "this.con" is null
 ]]></system-out>
   </testcase>
-  <testcase name="task8NullOnFail" classname="com.napier.sem.UnitTests" time="0.001">
+  <testcase name="task8NullOnFail" classname="com.napier.sem.UnitTests" time="0.003">
     <system-out><![CDATA[Cannot invoke "java.sql.Connection.createStatement()" because "this.con" is null
 ]]></system-out>
   </testcase>
