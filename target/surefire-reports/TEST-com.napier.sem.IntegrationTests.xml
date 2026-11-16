@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.napier.sem.IntegrationTests" time="0.193" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.napier.sem.IntegrationTests" time="0.192" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
@@ -14,7 +14,7 @@
     <property name="user.country" value="CA"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Microsoft\jdk-21.0.3.9-hotspot\bin"/>
-    <property name="sun.java.command" value="C:\Users\kjana\AppData\Local\Temp\surefire10447915745558043740\surefirebooter-20261116170522937_3.jar C:\Users\kjana\AppData\Local\Temp\surefire10447915745558043740 2026-11-16T17-05-22_852-jvmRun1 surefire-20261116170522937_1tmp surefire_0-20261116170522937_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\kjana\AppData\Local\Temp\surefire8922973951312477394\surefirebooter-20261116171346050_3.jar C:\Users\kjana\AppData\Local\Temp\surefire8922973951312477394 2026-11-16T17-13-45_965-jvmRun1 surefire-20261116171346050_1tmp surefire_0-20261116171346050_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="D:\Methods-Group-Project\target\test-classes;D:\Methods-Group-Project\target\classes;C:\Users\kjana\.m2\repository\mysql\mysql-connector-java\8.0.18\mysql-connector-java-8.0.18.jar;C:\Users\kjana\.m2\repository\com\google\protobuf\protobuf-java\3.6.1\protobuf-java-3.6.1.jar;C:\Users\kjana\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\kjana\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\kjana\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\kjana\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\kjana\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\kjana\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\kjana\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\kjana\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;C:\Users\kjana\.m2\repository\org\mockito\mockito-core\5.21.0\mockito-core-5.21.0.jar;C:\Users\kjana\.m2\repository\net\bytebuddy\byte-buddy\1.17.7\byte-buddy-1.17.7.jar;C:\Users\kjana\.m2\repository\net\bytebuddy\byte-buddy-agent\1.17.7\byte-buddy-agent-1.17.7.jar;C:\Users\kjana\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\kjana\AppData\Local\Temp\surefire10447915745558043740\surefirebooter-20261116170522937_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\kjana\AppData\Local\Temp\surefire8922973951312477394\surefirebooter-20261116171346050_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.3+9-LTS"/>
@@ -63,17 +63,17 @@
     <property name="maven.repo.local" value="C:\Users\kjana\.m2\repository"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testTopPopulatedCapitals" classname="com.napier.sem.IntegrationTests" time="0.148">
+  <testcase name="testTopPopulatedCapitals" classname="com.napier.sem.IntegrationTests" time="0.154">
     <system-out><![CDATA[Connecting to database...
 Successfully connected
 ]]></system-out>
   </testcase>
-  <testcase name="testTopPopulatedCapitalsWorld" classname="com.napier.sem.IntegrationTests" time="0.014">
+  <testcase name="testTopPopulatedCapitalsWorld" classname="com.napier.sem.IntegrationTests" time="0.012">
     <system-out><![CDATA[Connecting to database...
 Successfully connected
 ]]></system-out>
   </testcase>
-  <testcase name="testTopCapitalsRegion" classname="com.napier.sem.IntegrationTests" time="0.012">
+  <testcase name="testTopCapitalsRegion" classname="com.napier.sem.IntegrationTests" time="0.009">
     <system-out><![CDATA[Connecting to database...
 Successfully connected
 ]]></system-out>
