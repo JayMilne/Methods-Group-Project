@@ -9,13 +9,20 @@ public class Main
      * Connection to MySQL database.
      */
     private Connection con = null;
+    Main() {
+
+    }
+
+    Main (Connection con) {
+        this.con = con;
+    }
 
     public static void main(String[] args)
     {
         // Create new Application
         Main a = new Main();
 
-        // Connect to database
+        // Connect to database local host :33060
         if(args.length < 1){
             a.connect("localhost:33060", 30000);
         }else{
@@ -26,7 +33,6 @@ public class Main
         a.getCountriesContinent("Europe");
 
         a.getCountriesRegion("British Islands");
-
         a.getCountriesWorld();
 
         a.topPopulatedCountries(10);
@@ -34,6 +40,9 @@ public class Main
         a.topCountriesContinent("Europe", 10);
 
         a.topCountriesRegion("British Islands", 2);
+        a.topPopulatedCapitals("Asia",5);
+        a.topCapitalsRegion("Southern Europe",5);
+        a.topPopulatedCapitalsWorld( 5);
 
         a.topPopulatedCitiesWorld(10);
 
@@ -65,7 +74,7 @@ public class Main
             System.out.println("Connecting to database...");
             try {
                 // Wait a bit for db to start
-                Thread.sleep(delay);
+//                Thread.sleep(delay);
                 // Connect to database
                 con = DriverManager.getConnection("jdbc:mysql://" + location
                                 + "/world?allowPublicKeyRetrieval=true&useSSL=false",
@@ -75,9 +84,10 @@ public class Main
             } catch (SQLException sqle) {
                 System.out.println("Failed to connect to database attempt " +                                  Integer.toString(i));
                 System.out.println(sqle.getMessage());
-            } catch (InterruptedException ie) {
-                System.out.println("Thread interrupted? Should not happen.");
             }
+//            catch (InterruptedException ie) {
+//                System.out.println("Thread interrupted? Should not happen.");
+//            }
         }
     }
 
@@ -668,6 +678,106 @@ public class Main
             System.out.println(e.getMessage());
         }
     }
+
+
+    /**
+     * Task 22
+     * The top N populated capital cities in a region where N is provided by the user.
+     */
+    public void topCapitalsRegion(String region, int n)
+    {
+        try {
+            // make sql statement
+            Statement stmt = con.createStatement();
+
+            // make query
+            String sql =
+                    "SELECT city.Name AS CapitalCity, country.Name AS Country, city.Population " +
+                            "FROM city INNER JOIN country " +
+                            "ON city.ID = country.Capital " +
+                            "WHERE country.Region = '" + region + "' " +
+                            "ORDER BY city.Population DESC " +
+                            "LIMIT " + n;
+
+            // execute query
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // print results
+            while (rs.next())
+            {
+                System.out.println(rs.getString("CapitalCity") + " - " + rs.getInt("Population"));
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    /**
+     * Task 21
+     * TThe top N populated capital cities in a continent where N is provided by the use
+     */
+
+    public void topPopulatedCapitals(String continent, int n)
+    {
+        try {
+            // make sql statement
+            Statement stmt = con.createStatement();
+
+            // make query
+            String sql = "SELECT city.Name AS CapitalCity, country.Name AS Country, " +
+                            "city.Population " +
+                            "FROM city INNER JOIN country " +
+                            "ON city.ID = country.Capital " +
+                            "WHERE country.Continent = '" + continent + "' " +
+                            "ORDER BY city.Population DESC " +
+                            "LIMIT " + n;
+            // execute query
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // print results
+            while (rs.next())
+            {
+                System.out.println(rs.getString("CapitalCity") + " - " + rs.getInt("Population"));
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    /**
+     * Task 20
+     * The top N populated capital cities in the world where N is provided by the user.
+     */
+public void topPopulatedCapitalsWorld( int n)
+{
+    try {
+        // make sql statement
+        Statement stmt = con.createStatement();
+
+        // make query
+        String sql =
+                "SELECT city.Name AS CapitalCity, country.Name AS Country, " +
+                        "city.Population " +
+                        "FROM city INNER JOIN country " +
+                        "ON city.ID = country.Capital " +
+                        "ORDER BY city.Population DESC " +
+                        "LIMIT " + n;
+        // execute query
+        ResultSet rs = stmt.executeQuery(sql);
+
+        // print results
+        while (rs.next())
+        {
+            System.out.println(rs.getString("CapitalCity") + " - " + rs.getInt("Population"));
+        }
+    }
+    catch (Exception e)
+    {
+        System.out.println(e.getMessage());
+    }
+}
 
     /**
      * Disconnect from the MySQL database.
