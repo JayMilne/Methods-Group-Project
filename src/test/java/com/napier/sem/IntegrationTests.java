@@ -17,7 +17,7 @@ public class IntegrationTests {
     @BeforeEach
     void setUp() {
         main = new Main();
-        main.connect("localhost:3306", 30000);
+        main.connect("localhost:33060", 30000);
 
         originalOut = System.out;
         output = new ByteArrayOutputStream();
