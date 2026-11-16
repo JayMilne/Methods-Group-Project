@@ -35,10 +35,12 @@ public class IntegrationTests {
         ArrayList<City> cities = a.citiesInWorldLargeToSmall();
         assertEquals("Mumbai (Bombay)", cities.get(0).name);
     }
+
     @Test
     void testTask7CorrectSize() {
         assertEquals(4079, a.citiesInWorldLargeToSmall().size());
     }
+
     @Test
     void testTask8CorrectFirstOutput() {
         ArrayList<City> cities = a.citiesInContinentLargeToSmall("Europe");
@@ -81,8 +83,5 @@ public class IntegrationTests {
         assertTrue(result.contains("Jakarta - 9604900"));
         assertEquals(5, result.lines().count());
     }
-
-}
-
 
 }
