@@ -1,9 +1,7 @@
 package com.napier.sem;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -16,11 +14,13 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 
-public class UnitTests {
+public class UnitTests
+{
     static Main main;
 
     @BeforeAll
-    static void init() {
+    static void init()
+    {
         main = new Main();
     }
     //ADD NEW TESTS HERE
@@ -34,7 +34,8 @@ public class UnitTests {
     private PrintStream originalOut;
 
     @BeforeEach
-    void setUp() throws Exception {
+    void setUp() throws Exception
+    {
         con = mock(Connection.class);
         stmt = mock(Statement.class);
         rs = mock(ResultSet.class);
@@ -50,12 +51,14 @@ public class UnitTests {
     }
 
     @AfterEach
-    void tearDown() {
+    void tearDown()
+    {
         System.setOut(originalOut);
     }
 
     @Test
-    void testTopPopulatedCapitals() throws Exception {
+    void testTopPopulatedCapitals() throws Exception
+    {
         when(rs.next()).thenReturn(true, true, false);
         when(rs.getString("CapitalCity")).thenReturn("Seoul", "Jakarta");
         when(rs.getInt("Population")).thenReturn(9981619, 9604900);
@@ -75,7 +78,8 @@ public class UnitTests {
     }
 
     @Test
-    void testTopCapitalsRegion() throws Exception {
+    void testTopCapitalsRegion() throws Exception
+    {
         when(rs.next()).thenReturn(true, true, false);
         when(rs.getString("CapitalCity")).thenReturn("Madrid", "Rome");
         when(rs.getInt("Population")).thenReturn(3233527, 2860009);
@@ -97,7 +101,8 @@ public class UnitTests {
     }
 
     @Test
-    void testTopPopulatedCapitalsWorld() throws Exception {
+    void testTopPopulatedCapitalsWorld() throws Exception
+    {
         when(rs.next()).thenReturn(true, true, false);
         when(rs.getString("CapitalCity")).thenReturn("Seoul", "Jakarta");
         when(rs.getInt("Population")).thenReturn(9981619, 9604900);
