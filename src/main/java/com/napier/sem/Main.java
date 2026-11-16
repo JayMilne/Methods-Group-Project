@@ -21,7 +21,7 @@ public class Main
         // Create new Application
         Main a = new Main();
 
-        // Connect to database
+        // Connect to database local host :33060
         if(args.length < 1){
             a.connect("localhost:33060", 30000);
         }else{
