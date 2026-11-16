@@ -1,7 +1,5 @@
 package com.napier.sem;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -12,11 +10,11 @@ import static org.junit.jupiter.api.Assertions.*;
 public class IntegrationTests {
 
     static Main a;
-    private ByteArrayOutputStream output;
-    private PrintStream originalOut;
+    static ByteArrayOutputStream output;
+    static PrintStream originalOut;
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void setUp() {
         a = new Main();
         a.connect("localhost:33060", 30000);
 
@@ -24,9 +22,19 @@ public class IntegrationTests {
         output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
     }
-
+    @BeforeEach
+    void beforeEach() {
+        originalOut = System.out;
+        output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+    }
     @AfterEach
-    void tearDown() {
+    void afterEach() {
+        System.setOut(originalOut);
+    }
+
+    @AfterAll
+    static void tearDown() {
         System.setOut(originalOut);
         a.disconnect();
     }
