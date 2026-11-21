@@ -92,4 +92,107 @@ public class IntegrationTests {
         assertEquals(5, result.lines().count());
     }
 
+    @Test
+    void testGetCountriesWorld()
+    {
+        // Run the method using the actual database
+        a.getCountriesWorld();
+
+        // Capture the output
+        String result = output.toString()
+                .replace("\r\n", "\n")
+                .trim();
+
+        String[] lines = result.split("\n");
+
+        // Check that countries were returned
+        assertTrue(lines.length >= 2);
+
+        // Check the first two countries by population
+        assertTrue(lines[0].startsWith("China - "));
+        assertTrue(lines[1].startsWith("India - "));
+
+        // Check that populations are in descending order
+        int previousPopulation = Integer.MAX_VALUE;
+
+        for (String line : lines)
+        {
+            int population = Integer.parseInt(
+                    line.substring(line.lastIndexOf(" - ") + 3));
+
+            assertTrue(population <= previousPopulation);
+
+            previousPopulation = population;
+        }
+    }
+
+    @Test
+    void testGetCountriesContinent()
+    {
+        // Run the method using the actual database
+        a.getCountriesContinent("Asia");
+
+        // Capture the output
+        String result = output.toString()
+                .replace("\r\n", "\n")
+                .trim();
+
+        String[] lines = result.split("\n");
+
+        // Check that countries were returned
+        assertTrue(lines.length > 0);
+
+        // Check the first country by population
+        assertTrue(lines[0].startsWith("China - "));
+
+        // Check that populations are in descending order
+        int previousPopulation = Integer.MAX_VALUE;
+
+        for (String line : lines)
+        {
+            int population = Integer.parseInt(
+                    line.substring(line.lastIndexOf(" - ") + 3));
+
+            assertTrue(population <= previousPopulation);
+
+            previousPopulation = population;
+        }
+    }
+
+    @Test
+    void testGetCountriesRegion()
+    {
+        // Run the method using the actual database
+        a.getCountriesRegion("Southern Europe");
+
+        // Capture the output
+        String result = output.toString()
+                .replace("\r\n", "\n")
+                .trim();
+
+        String[] lines = result.split("\n");
+
+        // Check that countries were returned
+        assertTrue(lines.length > 0);
+
+        // Check the first country by population
+        assertTrue(lines[0].startsWith("Italy - "));
+
+        // Check that populations are in descending order
+        int previousPopulation = Integer.MAX_VALUE;
+
+        for (String line : lines)
+        {
+            int population = Integer.parseInt(
+                    line.substring(line.lastIndexOf(" - ") + 3));
+
+            assertTrue(population <= previousPopulation);
+
+            previousPopulation = population;
+        }
+    }
+
+
+
+
 }

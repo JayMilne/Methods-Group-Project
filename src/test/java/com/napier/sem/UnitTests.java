@@ -132,4 +132,114 @@ public class UnitTests
         Main noConnection = new Main();
         assertNull(noConnection.citiesInContinentLargeToSmall("Europe"));
     }
+
+    @Test
+    void testGetCountriesWorld() throws Exception
+    {
+        // Simulate two countries being returned by the database
+        when(rs.next()).thenReturn(true, true, false);
+
+        when(rs.getString("Name"))
+                .thenReturn("China", "India");
+
+        when(rs.getInt("Population"))
+                .thenReturn(1411750000, 1380000000);
+
+        // Run the method being tested
+        a.getCountriesWorld();
+
+        // Expected console output
+        String expected =
+                "China - 1411750000\n" +
+                        "India - 1380000000";
+
+        // Capture actual output
+        String result = output.toString()
+                .replace("\r\n", "\n")
+                .trim();
+
+        // Check that the output is correct
+        assertEquals(expected, result);
+
+        // Check that the SQL query sorts population descending
+        verify(stmt).executeQuery(
+                contains("ORDER BY Population DESC"));
+    }
+
+    @Test
+    void testGetCountriesContinent() throws Exception
+    {
+        // Simulate two countries being returned by the database
+        when(rs.next()).thenReturn(true, true, false);
+
+        when(rs.getString("Name"))
+                .thenReturn("China", "India");
+
+        when(rs.getInt("Population"))
+                .thenReturn(1411750000, 1380000000);
+
+        // Run the method being tested
+        a.getCountriesContinent("Asia");
+
+        // Expected console output
+        String expected =
+                "China - 1411750000\n" +
+                        "India - 1380000000";
+
+        // Capture actual output
+        String result = output.toString()
+                .replace("\r\n", "\n")
+                .trim();
+
+        // Check that the output is correct
+        assertEquals(expected, result);
+
+        // Check that the SQL query filters by continent
+        verify(stmt).executeQuery(
+                contains("WHERE Continent = 'Asia'"));
+
+        // Check that the SQL query sorts population descending
+        verify(stmt).executeQuery(
+                contains("ORDER BY Population DESC"));
+    }
+
+    @Test
+    void testGetCountriesRegion() throws Exception
+    {
+        // Simulate two countries being returned by the database
+        when(rs.next()).thenReturn(true, true, false);
+
+        when(rs.getString("Name"))
+                .thenReturn("Spain", "Italy");
+
+        when(rs.getInt("Population"))
+                .thenReturn(47450795, 58870762);
+
+        // Run the method being tested
+        a.getCountriesRegion("Southern Europe");
+
+        // Expected console output
+        String expected =
+                "Spain - 47450795\n" +
+                        "Italy - 58870762";
+
+        // Capture actual output
+        String result = output.toString()
+                .replace("\r\n", "\n")
+                .trim();
+
+        // Check that the output is correct
+        assertEquals(expected, result);
+
+        // Check that the SQL query filters by region
+        verify(stmt).executeQuery(
+                contains("WHERE Region = 'Southern Europe'"));
+
+        // Check that the SQL query sorts population descending
+        verify(stmt).executeQuery(
+                contains("ORDER BY Population DESC"));
+    }
+
+
+
 }
