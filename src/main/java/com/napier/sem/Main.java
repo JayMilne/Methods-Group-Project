@@ -1,15 +1,29 @@
 package com.napier.sem;
 
+import java.io.*;
+import java.nio.file.*;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * Handles and generates report from database
+ */
 public class Main
 {
     /**
      * Connection to MySQL database.
      */
     private Connection con = null;
+    Main() {
 
+    }
+
+    Main (Connection con) {
+        this.con = con;
+    }
+    /**
+     * Starts up database, runs report functions, creates report, closes database
+     */
     public static void main(String[] args)
     {
         // Create new Application
@@ -26,7 +40,6 @@ public class Main
         a.getCountriesContinent("Europe");
 
         a.getCountriesRegion("British Islands");
-
         a.getCountriesWorld();
 
         a.topPopulatedCountries(10);
@@ -34,6 +47,9 @@ public class Main
         a.topCountriesContinent("Europe", 10);
 
         a.topCountriesRegion("British Islands", 2);
+        a.topPopulatedCapitals("Asia",5);
+        a.topCapitalsRegion("Southern Europe",5);
+        a.topPopulatedCapitalsWorld( 5);
 
         a.topPopulatedCitiesWorld(10);
 
@@ -44,6 +60,8 @@ public class Main
         a.citiesInWorldLargeToSmall();
 
         a.citiesInContinentLargeToSmall("Europe");
+
+        a.generateReport(a, "output.md");
 
         // Disconnect from database
         a.disconnect();
@@ -75,9 +93,33 @@ public class Main
             } catch (SQLException sqle) {
                 System.out.println("Failed to connect to database attempt " +                                  Integer.toString(i));
                 System.out.println(sqle.getMessage());
-            } catch (InterruptedException ie) {
+            }
+            catch (InterruptedException ie) {
                 System.out.println("Thread interrupted? Should not happen.");
             }
+        }
+    }
+    /**
+     * Generates a report and outputs to a file
+     */
+    public void generateReport(Main a, String file)
+    {
+        try {
+            //Create directory if not already made
+            new File("./reports/").mkdir();
+            //Reads from arrays into the file
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + file)));
+            for (City c : a.citiesInWorldLargeToSmall()) {
+                writer.write(c.toString());
+                writer.newLine();
+            }
+            for (City c : a.citiesInContinentLargeToSmall("Europe")) {
+                writer.write(c.toString());
+                writer.newLine();
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -210,7 +252,7 @@ public class Main
             String sql =
                     "SELECT Name, Population " +
                             "FROM country " +
-                            "ORDER BY Population DESC" +
+                            "ORDER BY Population DESC " +
                             "LIMIT " + n;
 
             // execute our query
@@ -243,8 +285,8 @@ public class Main
             String sql =
                     "SELECT Name, Population " +
                             "FROM country " +
-                            "WHERE Continent = " + continent +
-                            "ORDER BY Population DESC " +
+                            "WHERE Continent = '" + continent +
+                            "' ORDER BY Population DESC " +
                             "LIMIT " + n;
 
             // execute query
@@ -276,8 +318,8 @@ public class Main
             String sql =
                     "SELECT Name, Population " +
                             "FROM country " +
-                            "WHERE Region = " + region +
-                            "ORDER BY Population DESC " +
+                            "WHERE Region = '" + region +
+                            "' ORDER BY Population DESC " +
                             "LIMIT " + n;
 
             // execute query
@@ -668,6 +710,106 @@ public class Main
             System.out.println(e.getMessage());
         }
     }
+
+
+    /**
+     * Task 22
+     * The top N populated capital cities in a region where N is provided by the user.
+     */
+    public void topCapitalsRegion(String region, int n)
+    {
+        try {
+            // make sql statement
+            Statement stmt = con.createStatement();
+
+            // make query
+            String sql =
+                    "SELECT city.Name AS CapitalCity, country.Name AS Country, city.Population " +
+                            "FROM city INNER JOIN country " +
+                            "ON city.ID = country.Capital " +
+                            "WHERE country.Region = '" + region + "' " +
+                            "ORDER BY city.Population DESC " +
+                            "LIMIT " + n;
+
+            // execute query
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // print results
+            while (rs.next())
+            {
+                System.out.println(rs.getString("CapitalCity") + " - " + rs.getInt("Population"));
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    /**
+     * Task 21
+     * TThe top N populated capital cities in a continent where N is provided by the use
+     */
+
+    public void topPopulatedCapitals(String continent, int n)
+    {
+        try {
+            // make sql statement
+            Statement stmt = con.createStatement();
+
+            // make query
+            String sql = "SELECT city.Name AS CapitalCity, country.Name AS Country, " +
+                            "city.Population " +
+                            "FROM city INNER JOIN country " +
+                            "ON city.ID = country.Capital " +
+                            "WHERE country.Continent = '" + continent + "' " +
+                            "ORDER BY city.Population DESC " +
+                            "LIMIT " + n;
+            // execute query
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // print results
+            while (rs.next())
+            {
+                System.out.println(rs.getString("CapitalCity") + " - " + rs.getInt("Population"));
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+    /**
+     * Task 20
+     * The top N populated capital cities in the world where N is provided by the user.
+     */
+public void topPopulatedCapitalsWorld( int n)
+{
+    try {
+        // make sql statement
+        Statement stmt = con.createStatement();
+
+        // make query
+        String sql =
+                "SELECT city.Name AS CapitalCity, country.Name AS Country, " +
+                        "city.Population " +
+                        "FROM city INNER JOIN country " +
+                        "ON city.ID = country.Capital " +
+                        "ORDER BY city.Population DESC " +
+                        "LIMIT " + n;
+        // execute query
+        ResultSet rs = stmt.executeQuery(sql);
+
+        // print results
+        while (rs.next())
+        {
+            System.out.println(rs.getString("CapitalCity") + " - " + rs.getInt("Population"));
+        }
+    }
+    catch (Exception e)
+    {
+        System.out.println(e.getMessage());
+    }
+}
 
     /**
      * Disconnect from the MySQL database.

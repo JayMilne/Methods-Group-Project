@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.napier.sem.IntegrationTests" time="30.869" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.napier.sem.IntegrationTests" time="31.028" tests="17" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Users\jaymi\Documents\Y2TR1\Methods\Methods-Group-Project\target\test-classes;C:\Users\jaymi\Documents\Y2TR1\Methods\Methods-Group-Project\target\classes;C:\Users\jaymi\.m2\repository\mysql\mysql-connector-java\8.0.18\mysql-connector-java-8.0.18.jar;C:\Users\jaymi\.m2\repository\com\google\protobuf\protobuf-java\3.6.1\protobuf-java-3.6.1.jar;C:\Users\jaymi\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.1.0\junit-jupiter-api-5.1.0.jar;C:\Users\jaymi\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\jaymi\.m2\repository\org\opentest4j\opentest4j\1.0.0\opentest4j-1.0.0.jar;C:\Users\jaymi\.m2\repository\org\junit\platform\junit-platform-commons\1.1.0\junit-platform-commons-1.1.0.jar;"/>
+    <property name="java.class.path" value="C:\Users\jaymi\Documents\Y2TR1\Methods\Methods-Group-Project\target\test-classes;C:\Users\jaymi\Documents\Y2TR1\Methods\Methods-Group-Project\target\classes;C:\Users\jaymi\.m2\repository\mysql\mysql-connector-java\8.0.18\mysql-connector-java-8.0.18.jar;C:\Users\jaymi\.m2\repository\com\google\protobuf\protobuf-java\3.6.1\protobuf-java-3.6.1.jar;C:\Users\jaymi\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\jaymi\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\jaymi\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\jaymi\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\jaymi\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\jaymi\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\jaymi\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\jaymi\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;C:\Users\jaymi\.m2\repository\org\mockito\mockito-core\5.21.0\mockito-core-5.21.0.jar;C:\Users\jaymi\.m2\repository\net\bytebuddy\byte-buddy\1.17.7\byte-buddy-1.17.7.jar;C:\Users\jaymi\.m2\repository\net\bytebuddy\byte-buddy-agent\1.17.7\byte-buddy-agent-1.17.7.jar;C:\Users\jaymi\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;"/>
     <property name="java.vm.vendor" value="Microsoft"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -15,9 +15,9 @@
     <property name="user.country" value="GB"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Microsoft\jdk-21.0.8.9-hotspot\bin"/>
-    <property name="sun.java.command" value="C:\Users\jaymi\AppData\Local\Temp\surefire17281467810967748577\surefirebooter-20261102145354010_3.jar C:\Users\jaymi\AppData\Local\Temp\surefire17281467810967748577 2026-11-02T14-53-53_810-jvmRun1 surefire-20261102145354010_1tmp surefire_0-20261102145354010_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\jaymi\AppData\Local\Temp\surefire15883636801336341734\surefirebooter-20261123154829692_3.jar C:\Users\jaymi\AppData\Local\Temp\surefire15883636801336341734 2026-11-23T15-48-29_515-jvmRun1 surefire-20261123154829692_1tmp surefire_0-20261123154829692_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\jaymi\Documents\Y2TR1\Methods\Methods-Group-Project\target\test-classes;C:\Users\jaymi\Documents\Y2TR1\Methods\Methods-Group-Project\target\classes;C:\Users\jaymi\.m2\repository\mysql\mysql-connector-java\8.0.18\mysql-connector-java-8.0.18.jar;C:\Users\jaymi\.m2\repository\com\google\protobuf\protobuf-java\3.6.1\protobuf-java-3.6.1.jar;C:\Users\jaymi\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.1.0\junit-jupiter-api-5.1.0.jar;C:\Users\jaymi\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\jaymi\.m2\repository\org\opentest4j\opentest4j\1.0.0\opentest4j-1.0.0.jar;C:\Users\jaymi\.m2\repository\org\junit\platform\junit-platform-commons\1.1.0\junit-platform-commons-1.1.0.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Users\jaymi\Documents\Y2TR1\Methods\Methods-Group-Project\target\test-classes;C:\Users\jaymi\Documents\Y2TR1\Methods\Methods-Group-Project\target\classes;C:\Users\jaymi\.m2\repository\mysql\mysql-connector-java\8.0.18\mysql-connector-java-8.0.18.jar;C:\Users\jaymi\.m2\repository\com\google\protobuf\protobuf-java\3.6.1\protobuf-java-3.6.1.jar;C:\Users\jaymi\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\jaymi\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\jaymi\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\jaymi\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\jaymi\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\jaymi\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\jaymi\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\jaymi\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;C:\Users\jaymi\.m2\repository\org\mockito\mockito-core\5.21.0\mockito-core-5.21.0.jar;C:\Users\jaymi\.m2\repository\net\bytebuddy\byte-buddy\1.17.7\byte-buddy-1.17.7.jar;C:\Users\jaymi\.m2\repository\net\bytebuddy\byte-buddy-agent\1.17.7\byte-buddy-agent-1.17.7.jar;C:\Users\jaymi\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\jaymi"/>
     <property name="user.language" value="en"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\jaymi\AppData\Local\Temp\surefire17281467810967748577\surefirebooter-20261102145354010_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\jaymi\AppData\Local\Temp\surefire15883636801336341734\surefirebooter-20261123154829692_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.8+9-LTS"/>
@@ -64,12 +64,25 @@
     <property name="maven.repo.local" value="C:\Users\jaymi\.m2\repository"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testTask7CorrectSize" classname="com.napier.sem.IntegrationTests" time="0.191">
+  <testcase name="testTask7CorrectSize" classname="com.napier.sem.IntegrationTests" time="0.176">
     <system-out><![CDATA[Connecting to database...
 Successfully connected
 ]]></system-out>
   </testcase>
-  <testcase name="testTask8CorrectSize" classname="com.napier.sem.IntegrationTests" time="0.033"/>
-  <testcase name="testTask8CorrectFirstOutput" classname="com.napier.sem.IntegrationTests" time="0.027"/>
-  <testcase name="testTask7CorrectFirstOutput" classname="com.napier.sem.IntegrationTests" time="0.028"/>
+  <testcase name="testTask8CorrectSize" classname="com.napier.sem.IntegrationTests" time="0.025"/>
+  <testcase name="testTopPopulatedCapitals" classname="com.napier.sem.IntegrationTests" time="0.025"/>
+  <testcase name="testGetCountriesWorld" classname="com.napier.sem.IntegrationTests" time="0.022"/>
+  <testcase name="testTopCitiesDistrict" classname="com.napier.sem.IntegrationTests" time="0.013"/>
+  <testcase name="testTopCitiesCountry" classname="com.napier.sem.IntegrationTests" time="0.014"/>
+  <testcase name="testTopCountriesContinent" classname="com.napier.sem.IntegrationTests" time="0.009"/>
+  <testcase name="testGetCountriesRegion" classname="com.napier.sem.IntegrationTests" time="0.007"/>
+  <testcase name="testTask8CorrectFirstOutput" classname="com.napier.sem.IntegrationTests" time="0.022"/>
+  <testcase name="testTopPopulatedCapitalsWorld" classname="com.napier.sem.IntegrationTests" time="0.015"/>
+  <testcase name="testTask7CorrectFirstOutput" classname="com.napier.sem.IntegrationTests" time="0.012"/>
+  <testcase name="testTopCapitalsRegion" classname="com.napier.sem.IntegrationTests" time="0.008"/>
+  <testcase name="testGetCitiesDistrict" classname="com.napier.sem.IntegrationTests" time="0.008"/>
+  <testcase name="testGetCitiesRegion" classname="com.napier.sem.IntegrationTests" time="0.016"/>
+  <testcase name="testGetCountriesContinent" classname="com.napier.sem.IntegrationTests" time="0.007"/>
+  <testcase name="testTopPopulatedCountries" classname="com.napier.sem.IntegrationTests" time="0.006"/>
+  <testcase name="testTopCountriesRegion" classname="com.napier.sem.IntegrationTests" time="0.006"/>
 </testsuite>
