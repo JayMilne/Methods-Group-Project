@@ -8,5 +8,9 @@ public class City {
         this.name = name;
         this.population = population;
     }
+    @Override
+    public String toString() {
+        return (name + ", " + population);
+    }
 
 }

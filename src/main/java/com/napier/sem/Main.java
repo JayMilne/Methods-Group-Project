@@ -1,5 +1,7 @@
 package com.napier.sem;
 
+import java.io.*;
+import java.nio.file.*;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -54,6 +56,8 @@ public class Main
 
         a.citiesInContinentLargeToSmall("Europe");
 
+        a.generateReport(a, "output.md");
+
         // Disconnect from database
         a.disconnect();
     }
@@ -88,6 +92,25 @@ public class Main
             catch (InterruptedException ie) {
                 System.out.println("Thread interrupted? Should not happen.");
             }
+        }
+    }
+
+    public void generateReport(Main a, String file)
+    {
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + file)));
+            for (City c : a.citiesInWorldLargeToSmall()) {
+                writer.write(c.toString());
+                writer.newLine();
+            }
+            for (City c : a.citiesInContinentLargeToSmall("Europe")) {
+                writer.write(c.toString());
+                writer.newLine();
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
