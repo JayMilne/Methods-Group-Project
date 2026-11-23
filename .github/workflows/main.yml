@@ -60,7 +60,7 @@ jobs:
           files: |
             ./target/*.jar
       - name: Copy Output
-        run: docker container cp methods-group-project-app-1:./reports/output.md
+        run: docker container cp methods-group-project-app-1:./reports/output.md ./
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
