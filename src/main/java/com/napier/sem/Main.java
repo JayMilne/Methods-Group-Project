@@ -243,7 +243,7 @@ public class Main
             String sql =
                     "SELECT Name, Population " +
                             "FROM country " +
-                            "ORDER BY Population DESC" +
+                            "ORDER BY Population DESC " +
                             "LIMIT " + n;
 
             // execute our query
@@ -276,8 +276,8 @@ public class Main
             String sql =
                     "SELECT Name, Population " +
                             "FROM country " +
-                            "WHERE Continent = " + continent +
-                            "ORDER BY Population DESC " +
+                            "WHERE Continent = '" + continent +
+                            "' ORDER BY Population DESC " +
                             "LIMIT " + n;
 
             // execute query
@@ -309,8 +309,8 @@ public class Main
             String sql =
                     "SELECT Name, Population " +
                             "FROM country " +
-                            "WHERE Region = " + region +
-                            "ORDER BY Population DESC " +
+                            "WHERE Region = '" + region +
+                            "' ORDER BY Population DESC " +
                             "LIMIT " + n;
 
             // execute query
