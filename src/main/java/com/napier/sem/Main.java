@@ -5,6 +5,9 @@ import java.nio.file.*;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * Handles and generates report from database
+ */
 public class Main
 {
     /**
@@ -18,7 +21,9 @@ public class Main
     Main (Connection con) {
         this.con = con;
     }
-
+    /**
+     * Starts up database, runs report functions, creates report, closes database
+     */
     public static void main(String[] args)
     {
         // Create new Application
@@ -94,11 +99,15 @@ public class Main
             }
         }
     }
-
+    /**
+     * Generates a report and outputs to a file
+     */
     public void generateReport(Main a, String file)
     {
         try {
+            //Create directory if not already made
             new File("./reports/").mkdir();
+            //Reads from arrays into the file
             BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + file)));
             for (City c : a.citiesInWorldLargeToSmall()) {
                 writer.write(c.toString());
