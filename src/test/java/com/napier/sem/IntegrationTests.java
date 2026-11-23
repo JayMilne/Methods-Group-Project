@@ -192,7 +192,236 @@ public class IntegrationTests {
         }
     }
 
+    @Test
+    void testTopPopulatedCountries()
+    {
+        // Run the method using the actual database
+        a.topPopulatedCountries(5);
 
+        // Capture the output
+        String result = output.toString()
+                .replace("\r\n", "\n")
+                .trim();
 
+        String[] lines = result.split("\n");
 
+        // Check that five countries were returned
+        assertEquals(5, lines.length);
+
+        // Check the first two countries by population
+        assertTrue(lines[0].startsWith("China - "));
+        assertTrue(lines[1].startsWith("India - "));
+
+        // Check that populations are in descending order
+        int previousPopulation = Integer.MAX_VALUE;
+
+        for (String line : lines)
+        {
+            int population = Integer.parseInt(
+                    line.substring(line.lastIndexOf(" - ") + 3));
+
+            assertTrue(population <= previousPopulation);
+
+            previousPopulation = population;
+        }
+    }
+
+    @Test
+    void testTopCountriesContinent()
+    {
+        // Run the method using the actual database
+        a.topCountriesContinent("Asia", 5);
+
+        // Capture the output
+        String result = output.toString()
+                .replace("\r\n", "\n")
+                .trim();
+
+        String[] lines = result.split("\n");
+
+        // Check that five countries were returned
+        assertEquals(5, lines.length);
+
+        // Check the first two countries by population
+        assertTrue(lines[0].startsWith("China - "));
+        assertTrue(lines[1].startsWith("India - "));
+
+        // Check that populations are in descending order
+        int previousPopulation = Integer.MAX_VALUE;
+
+        for (String line : lines)
+        {
+            int population = Integer.parseInt(
+                    line.substring(line.lastIndexOf(" - ") + 3));
+
+            assertTrue(population <= previousPopulation);
+
+            previousPopulation = population;
+        }
+    }
+
+    @Test
+    void testTopCountriesRegion()
+    {
+        // Run the method using the actual database
+        a.topCountriesRegion("Southern Europe", 5);
+
+        // Capture the output
+        String result = output.toString()
+                .replace("\r\n", "\n")
+                .trim();
+
+        String[] lines = result.split("\n");
+
+        // Check that five countries were returned
+        assertEquals(5, lines.length);
+
+        // Check the first country by population
+        assertTrue(lines[0].startsWith("Italy - "));
+
+        // Check that populations are in descending order
+        int previousPopulation = Integer.MAX_VALUE;
+
+        for (String line : lines)
+        {
+            int population = Integer.parseInt(
+                    line.substring(line.lastIndexOf(" - ") + 3));
+
+            assertTrue(population <= previousPopulation);
+
+            previousPopulation = population;
+        }
+    }
+
+    @Test
+    void testGetCitiesRegion()
+    {
+        // Run the method using the actual database
+        a.getCitiesRegion("British Islands");
+
+        // Capture the output
+        String result = output.toString()
+                .replace("\r\n", "\n")
+                .trim();
+
+        String[] lines = result.split("\n");
+
+        // Check that cities were returned
+        assertTrue(lines.length > 0);
+
+        // Check the first city by population
+        assertTrue(lines[0].startsWith("London - "));
+
+        // Check that populations are in descending order
+        int previousPopulation = Integer.MAX_VALUE;
+
+        for (String line : lines)
+        {
+            int population = Integer.parseInt(
+                    line.substring(line.lastIndexOf(" - ") + 3));
+
+            assertTrue(population <= previousPopulation);
+
+            previousPopulation = population;
+        }
+    }
+
+    @Test
+    void testGetCitiesDistrict()
+    {
+        // Run the method using the actual database
+        a.getCitiesDistrict("Scotland");
+
+        // Capture the output
+        String result = output.toString()
+                .replace("\r\n", "\n")
+                .trim();
+
+        String[] lines = result.split("\n");
+
+        // Check that cities were returned
+        assertTrue(lines.length > 0);
+
+        // Check the first city by population
+        assertTrue(lines[0].startsWith("Glasgow - "));
+
+        // Check that populations are in descending order
+        int previousPopulation = Integer.MAX_VALUE;
+
+        for (String line : lines)
+        {
+            int population = Integer.parseInt(
+                    line.substring(line.lastIndexOf(" - ") + 3));
+
+            assertTrue(population <= previousPopulation);
+
+            previousPopulation = population;
+        }
+    }
+
+    @Test
+    void testTopCitiesCountry()
+    {
+        // Run the method using the actual database
+        a.topCitiesCountry("United Kingdom", 5);
+
+        // Capture the output
+        String result = output.toString()
+                .replace("\r\n", "\n")
+                .trim();
+
+        String[] lines = result.split("\n");
+
+        // Check that five cities were returned
+        assertEquals(5, lines.length);
+
+        // Check the first city by population
+        assertTrue(lines[0].startsWith("London - "));
+
+        // Check that populations are in descending order
+        int previousPopulation = Integer.MAX_VALUE;
+
+        for (String line : lines)
+        {
+            int population = Integer.parseInt(
+                    line.substring(line.lastIndexOf(" - ") + 3));
+
+            assertTrue(population <= previousPopulation);
+
+            previousPopulation = population;
+        }
+    }
+
+    @Test
+    void testTopCitiesDistrict()
+    {
+        // Run the method using the actual database
+        a.topCitiesDistrict("Scotland", 5);
+
+        // Capture the output
+        String result = output.toString()
+                .replace("\r\n", "\n")
+                .trim();
+
+        String[] lines = result.split("\n");
+
+        // Check that cities were returned
+        assertTrue(lines.length > 0);
+
+        // Check the first city by population
+        assertTrue(lines[0].startsWith("Glasgow - "));
+
+        // Check that populations are in descending order
+        int previousPopulation = Integer.MAX_VALUE;
+
+        for (String line : lines)
+        {
+            int population = Integer.parseInt(
+                    line.substring(line.lastIndexOf(" - ") + 3));
+
+            assertTrue(population <= previousPopulation);
+
+            previousPopulation = population;
+        }
+    }
 }
